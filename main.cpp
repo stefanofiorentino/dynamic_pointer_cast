@@ -39,10 +39,9 @@ int main()
     {
         item->x();
 
-        auto p = dynamic_cast<typename std::shared_ptr<D>::element_type *>(item.get());
-        if (p != nullptr)
+        if (auto pi = std::dynamic_pointer_cast<D>(item))
         {
-            std::shared_ptr<D>(item, p)->y();
+            pi->y();
         }
     }
     return 0;
