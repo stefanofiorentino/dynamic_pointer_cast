@@ -17,6 +17,7 @@ struct D : B
     void x() final
     {
         std::puts(__PRETTY_FUNCTION__);
+        B::x();
     }
 
     virtual void y() final
