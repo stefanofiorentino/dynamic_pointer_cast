@@ -3,25 +3,19 @@
 #include <vector>
 #include <memory>
 
-
-struct B
-{
-    virtual void x()
-    {
+struct B {
+    virtual void x() {
         std::puts(__PRETTY_FUNCTION__);
     }
 };
 
-struct D : B
-{
-    void x() final
-    {
+struct D : B {
+    void x() final {
         std::puts(__PRETTY_FUNCTION__);
         B::x();
     }
 
-    virtual void y() final
-    {
+    virtual void y() final {
         std::puts(__PRETTY_FUNCTION__);
     }
 };
@@ -39,8 +33,7 @@ int main() {
     for (auto const &item : ::details::base_shared_ptr_vector) {
         item->x();
 
-        if (auto pi = std::dynamic_pointer_cast<D>(item))
-        {
+        if (auto pi = std::dynamic_pointer_cast<D>(item)) {
             pi->y();
         }
     }
