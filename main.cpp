@@ -26,18 +26,17 @@ struct D : B
     }
 };
 
-std::vector<std::shared_ptr<B>> base_shared_ptr_vector;
-
-int main()
-{
+namespace details {
+    std::vector<std::shared_ptr<B>> base_shared_ptr_vector;
+}
+int main() {
     std::shared_ptr<B> b = std::make_shared<B>(B{});
-    base_shared_ptr_vector.push_back(b);
+    ::details::base_shared_ptr_vector.push_back(b);
 
     std::shared_ptr<D> d = std::make_shared<D>(D{});
-    base_shared_ptr_vector.push_back(d);
+    ::details::base_shared_ptr_vector.push_back(d);
 
-    for (auto const &item : base_shared_ptr_vector)
-    {
+    for (auto const &item : ::details::base_shared_ptr_vector) {
         item->x();
 
         if (auto pi = std::dynamic_pointer_cast<D>(item))
