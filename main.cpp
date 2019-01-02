@@ -23,6 +23,7 @@ struct D : B {
 namespace details {
     std::vector<std::shared_ptr<B>> base_shared_ptr_vector;
 }
+
 int main() {
     std::shared_ptr<B> b = std::make_shared<B>(B{});
     ::details::base_shared_ptr_vector.push_back(b);
