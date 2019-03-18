@@ -9,7 +9,7 @@ struct B {
     }
 };
 
-struct D : B {
+struct D : public B {
     void x() final {
         std::puts(__PRETTY_FUNCTION__);
         B::x();
